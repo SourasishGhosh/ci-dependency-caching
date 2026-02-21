@@ -23,4 +23,4 @@ jobs:
         run: npm ci                 # Or 'pip install -r requirements.txt' for Python
 
       - name: Run tests
-        run: npm test               # Add a simple package.json with tests if needed
+        run: npm test               # Add a simple package.json  with tests if needed
