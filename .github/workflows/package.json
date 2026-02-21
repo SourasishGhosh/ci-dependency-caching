@@ -1,0 +1,6 @@
+{
+  "name": "ci-test",
+  "version": "1.0.0",
+  "scripts": { "test": "echo 'Tests pass!'" },
+  "devDependencies": { "@types/node": "^20.0.0" }
+}
