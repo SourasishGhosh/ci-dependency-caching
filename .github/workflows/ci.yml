@@ -1,0 +1,26 @@
+name: CI with Cache
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: prime-cache-f79492f  # Required step name
+        uses: actions/cache@v4     # Latest version as specified
+        with:
+          key: cache-f79492f       # Exact key required
+          path: ~/.npm             # Cache Node dependencies (or swap for ~/.cache/pip if Python)
+        id: cache-step             # Optional ID for output access
+
+      - name: Echo cache result   # Shows hit/miss as required
+        run: echo "Cache result: ${{ steps.cache-step.outputs.cache-hit }}"
+
+      - name: Install dependencies
+        run: npm ci                 # Or 'pip install -r requirements.txt' for Python
+
+      - name: Run tests
+        run: npm test               # Add a simple package.json with tests if needed
